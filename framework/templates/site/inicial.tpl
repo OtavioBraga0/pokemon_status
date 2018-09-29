@@ -1,0 +1,12 @@
+<html>
+    <head>
+      <!-- Plotly.js -->
+      <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    </head>
+
+    <body>
+
+      <div id="myDiv"><!-- Plotly chart will be drawn inside this DIV --></div>
+      <script src="{$WWW_JS}style.js"></script>
+    </body>
+</html>
