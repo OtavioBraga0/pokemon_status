@@ -3,15 +3,15 @@
 class Config
 {
     //Dados do Sistema
-    const NOME_SITE = "Hospital de Amor - Barretos";
+    const NOME_SITE = "Pokemon Status";
 	const EMAIL_SITE = "";
 	const SITE_CODIGO = 1;
 
     // Informa��es de Conex�o - DB MySQL
-    //  const HOST = 'localhost';
-    //  const USER = 'root';
-    //  const PSWD = '';
-    //  const DB   = 'conceicaopraia';
+      const HOST = 'localhost';
+      const USER = 'root';
+      const PSWD = '';
+      const DB   = 'pokemon_status';
 
 	// Configura��es de SMTP
     const SMTP_EMAIL = "";

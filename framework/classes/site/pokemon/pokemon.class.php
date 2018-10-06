@@ -1,14 +1,21 @@
 <?php
 
-class Doador
+class Pokemon
 {
     
     /* Atributos */
     private $iCodigo;
-    private $sConteudo;
-    private $sToken;
-    private $sCode;
-    private $iVisto;
+    private $sName;
+    private $sType1;
+    private $sType2;
+    private $iHp;
+    private $iAttack;
+    private $iDefense;
+    private $iSpAttack;
+    private $iSpDefense;
+    private $iSpeed;
+    private $iGeneration;
+    private $bLegendary;
     
     
     /* M�todos m�gicos GET e SET */

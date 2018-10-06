@@ -4,12 +4,12 @@
 	setlocale(LC_ALL, "ptb");
     date_default_timezone_set("America/Sao_paulo");
 
-	// error_reporting( E_ALL  ^ E_STRICT);
+	 error_reporting( E_ALL  ^ E_STRICT);
 
 
 	// ini_set( 'display_errors', '1' );
 
-	error_reporting(0);
+//	error_reporting(0);
 
 	ini_set('post_max_size', '640M');
 	ini_set('upload_max_filesize', '640M');
