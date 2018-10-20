@@ -4,7 +4,6 @@ class Config
 {
     //Dados do Sistema
     const NOME_SITE = "Pokemon Status";
-	const EMAIL_SITE = "";
 	const SITE_CODIGO = 1;
 
     // Informa��es de Conex�o - DB MySQL
@@ -12,11 +11,6 @@ class Config
       const USER = 'root';
       const PSWD = '';
       const DB   = 'pokemon_status';
-
-	// Configura��es de SMTP
-    const SMTP_EMAIL = "";
-    const SMTP_HOST  = "";
-    const SMTP_PWD   = "";
 
     private final function __construct()
     {

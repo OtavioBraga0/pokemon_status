@@ -12,5 +12,11 @@ body{
     display: flex;
     align-items: center;
     justify-content: space-around;
-    
+}
+
+.img-pokemon{
+    width: 60%;
+    display: flex;
+    justify-content: space-around;
+    margin: 0!important
 }

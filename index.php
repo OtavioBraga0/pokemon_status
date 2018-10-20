@@ -22,7 +22,7 @@
     session_start();
 
     /* Define os Caminhos Absolutos */
-    define ( 'PATH_SISTEMA', 'pokemon_status' );
+    define ( 'PATH_SISTEMA', 'faculdade/pokemon_status' );
     define ( 'PATH_FW',      'framework' );
     define ( 'PATH_ABS',     dirname ( __FILE__ ) . '\\' );
     define ( 'PATH_WWW',     'http://' . $_SERVER['HTTP_HOST'] .'/'.PATH_SISTEMA.'/');

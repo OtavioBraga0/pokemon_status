@@ -8,8 +8,8 @@ Controller::loadClass('site/pokemon/pokemonDB');
 $oTemplate = Template::inicializaSmarty();
 
 
-if(isset($_POST['idPokemon1']) && isset($_POST['idPokemon2'])){
-    PokemonDB::setaFiltro(" AND (Pokemon_lng_Codigo = ".$_POST['idPokemon1']." OR Pokemon_lng_Codigo = ".$_POST['idPokemon2'].")");
+if(isset($_POST['idPokemon'])){
+    PokemonDB::setaFiltro(" AND Pokemon_lng_Codigo = ".$_POST['idPokemon']);
     $arrObjPokemon = PokemonDB::pesquisaPokemonListaJson();
     
     echo $arrObjPokemon;

@@ -35,9 +35,9 @@
             </div>
         </div>
         <div class="container-fluid pokemon-status row">
-            <div id="pokemon1-status" class="col-xs-4"></div>    
+            <div id="pokemon1-status" class="col-xs-4 pokemon-status"></div>    
             <div id="myDiv"><!-- Plotly chart will be drawn inside this DIV --></div>
-            <div id="pokemon2-status" class="col-xs-4"></div>
+            <div id="pokemon2-status" class="col-xs-4 pokemon-status"></div>
         </div>
         
         <script src="{$WWW_JS}style.js"></script>
