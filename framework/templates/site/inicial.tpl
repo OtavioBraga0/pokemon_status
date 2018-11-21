@@ -16,30 +16,40 @@
 
     <body>
         <div class="navbar">
-            <div class="form-group">
-                <label>Pokemon 1</label>
-                <select id="pokemon1" name="pokemon1" class="form-control">
-                    {foreach $arrObjPokemon as $oPokemon}
-                        <option value="{$oPokemon->iCodigo}">{$oPokemon->sName}</option>
-                    {/foreach}
-                </select>
+            <div class="col-xs-3">
+                <div class="form-group">
+                    <label>Pokemon 1</label>
+                    <select id="pokemon1" name="pokemon1" class="form-control">
+                        {foreach $arrObjPokemon as $oPokemon}
+                            <option value="{$oPokemon->iCodigo}">{$oPokemon->sName}</option>
+                        {/foreach}
+                    </select>
+                </div>
             </div>
-
-            <div class="form-group">
-                <label>Pokemon 2</label>
-                <select id="pokemon2" name="pokemon2" class="form-control">
-                    {foreach $arrObjPokemon as $oPokemon}
-                        <option value="{$oPokemon->iCodigo}">{$oPokemon->sName}</option>
-                    {/foreach}
-                </select>
+            <div class="col-xs-6" id="pokemon-logo">
+                <img class="pokemon-logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/International_Pok%C3%A9mon_logo.svg/640px-International_Pok%C3%A9mon_logo.svg.png"/>
+            </div>
+            <div class="col-xs-3">
+                <div class="form-group">
+                    <label>Pokemon 2</label>
+                    <select id="pokemon2" name="pokemon2" class="form-control">
+                        {foreach $arrObjPokemon as $oPokemon}
+                            <option value="{$oPokemon->iCodigo}">{$oPokemon->sName}</option>
+                        {/foreach}
+                    </select>
+                </div>
             </div>
         </div>
-        <div class="container-fluid pokemon-status row">
-            <div id="pokemon1-status" class="col-xs-4 pokemon-status"></div>    
+        <div class="container-fluid pokemon-status">
+            <div id="pokemon1-status" class="col-xs-2 pokemon-status"></div>    
             <div id="myDiv"><!-- Plotly chart will be drawn inside this DIV --></div>
-            <div id="pokemon2-status" class="col-xs-4 pokemon-status"></div>
+            <div id="pokemon2-status" class="col-xs-2 pokemon-status"></div>
         </div>
-        
+        <div class="row luta-menu">
+            <div class="col-xs-2">
+                <img id="luta-pokemon" src="https://png2.kisspng.com/20180729/ueg/kisspng-computer-icons-battle-clash-of-clans-shield-logo-5b5d3f09c880d6.1588008015328376418213.png" />
+            </div>
+        </div>
         <script src="{$WWW_JS}style.js"></script>
     </body>
 </html>

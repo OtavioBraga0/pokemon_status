@@ -1,11 +1,12 @@
 body{
-    margin: 20px;
+    overflow-x: hidden;
 }
 
 .navbar{
     display: flex;
     align-items: center;
     justify-content: space-around;
+    background-color: #6998df
 }
 
 .pokemon-status{
@@ -15,8 +16,70 @@ body{
 }
 
 .img-pokemon{
-    width: 60%;
+    height: 150px;
+    margin: 0!important
+}
+
+.compare-pokemon ul li {
+    list-style: none;
+    padding:  5px 0;
+}
+
+.compare-pokemon label{
+    width: 100%;
+}
+
+.compare-pokemon ul{
+    padding-left: 0!important;
+}
+
+.compare-pokemon table tr td b{
+    float: right !important;
+}
+
+.compare-pokemon .pokemon-type{
+    width: 100%;
     display: flex;
     justify-content: space-around;
-    margin: 0!important
+    align-items: center;
+}
+
+.compare-pokemon .pokemon-type img{
+    margin: 10px;
+}
+
+#pokemon-logo > img{
+    height: 50px;
+}
+
+#pokemon-logo {
+    display: flex; 
+    justify-content: center; 
+    align-items: center
+}
+
+#luta-pokemon{
+    height: 100px;
+    margin: 0 auto;
+}
+
+.luta-menu{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    height: 40px;
+}
+
+.luta-menu .col-xs-2{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.jumbotron{
+    padding: 15px !important;
+}
+
+.jumbotron table {
+    margin-bottom: 0px !important;
 }

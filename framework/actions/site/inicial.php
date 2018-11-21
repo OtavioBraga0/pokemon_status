@@ -16,6 +16,14 @@ if(isset($_POST['idPokemon'])){
     return;
 }
 
+if(isset($_POST['idPokemon1']) && isset($_POST['idPokemon2'])){
+    PokemonDB::setaFiltro(" AND (Pokemon_lng_Codigo = ".$_POST['idPokemon']);
+    $arrObjPokemon = PokemonDB::pesquisaPokemonListaJson();
+    
+    echo $arrObjPokemon;
+    return;
+}
+
 $arrObjPokemon = PokemonDB::pesquisaPokemonLista();
 
 
