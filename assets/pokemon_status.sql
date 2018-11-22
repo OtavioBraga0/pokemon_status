@@ -53,27 +53,21 @@ INSERT INTO `pokemon` (`Pokemon_lng_Codigo`, `Pokemon_vch_Name`, `Pokemon_vch_Ty
 (1, 'Bulbasaur', 'Grass', 'Poison', 45, 49, 49, 65, 65, 45, 1, 0),
 (2, 'Ivysaur', 'Grass', 'Poison', 60, 62, 63, 80, 80, 60, 1, 0),
 (3, 'Venusaur', 'Grass', 'Poison', 80, 82, 83, 100, 100, 80, 1, 0),
-(4, 'Mega Venusaur', 'Grass', 'Poison', 80, 100, 123, 122, 120, 80, 1, 0),
 (5, 'Charmander', 'Fire', '', 39, 52, 43, 60, 50, 65, 1, 0),
 (6, 'Charmeleon', 'Fire', '', 58, 64, 58, 80, 65, 80, 1, 0),
 (7, 'Charizard', 'Fire', 'Flying', 78, 84, 78, 109, 85, 100, 1, 0),
-(8, 'Mega Charizard X', 'Fire', 'Dragon', 78, 130, 111, 130, 85, 100, 1, 0),
-(9, 'Mega Charizard Y', 'Fire', 'Flying', 78, 104, 78, 159, 115, 100, 1, 0),
 (10, 'Squirtle', 'Water', '', 44, 48, 65, 50, 64, 43, 1, 0),
 (11, 'Wartortle', 'Water', '', 59, 63, 80, 65, 80, 58, 1, 0),
 (12, 'Blastoise', 'Water', '', 79, 83, 100, 85, 105, 78, 1, 0),
-(13, 'Mega Blastoise', 'Water', '', 79, 103, 120, 135, 115, 78, 1, 0),
 (14, 'Caterpie', 'Bug', '', 45, 30, 35, 20, 20, 45, 1, 0),
 (15, 'Metapod', 'Bug', '', 50, 20, 55, 25, 25, 30, 1, 0),
 (16, 'Butterfree', 'Bug', 'Flying', 60, 45, 50, 90, 80, 70, 1, 0),
 (17, 'Weedle', 'Bug', 'Poison', 40, 35, 30, 20, 20, 50, 1, 0),
 (18, 'Kakuna', 'Bug', 'Poison', 45, 25, 50, 25, 25, 35, 1, 0),
 (19, 'Beedrill', 'Bug', 'Poison', 65, 90, 40, 45, 80, 75, 1, 0),
-(20, 'Mega Beedrill', 'Bug', 'Poison', 65, 150, 40, 15, 80, 145, 1, 0),
 (21, 'Pidgey', 'Normal', 'Flying', 40, 45, 40, 35, 35, 56, 1, 0),
 (22, 'Pidgeotto', 'Normal', 'Flying', 63, 60, 55, 50, 50, 71, 1, 0),
 (23, 'Pidgeot', 'Normal', 'Flying', 83, 80, 75, 70, 70, 101, 1, 0),
-(24, 'Mega Pidgeot', 'Normal', 'Flying', 83, 80, 80, 135, 80, 121, 1, 0),
 (25, 'Rattata', 'Normal', '', 30, 56, 35, 25, 35, 72, 1, 0),
 (26, 'Raticate', 'Normal', '', 55, 81, 60, 50, 70, 97, 1, 0),
 (27, 'Spearow', 'Normal', 'Flying', 40, 60, 30, 31, 31, 70, 1, 0),
@@ -119,7 +113,6 @@ INSERT INTO `pokemon` (`Pokemon_lng_Codigo`, `Pokemon_vch_Name`, `Pokemon_vch_Ty
 (69, 'Abra', 'Psychic', '', 25, 20, 15, 105, 55, 90, 1, 0),
 (70, 'Kadabra', 'Psychic', '', 40, 35, 30, 120, 70, 105, 1, 0),
 (71, 'Alakazam', 'Psychic', '', 55, 50, 45, 135, 95, 120, 1, 0),
-(72, 'Mega Alakazam', 'Psychic', '', 55, 50, 65, 175, 95, 150, 1, 0),
 (73, 'Machop', 'Fighting', '', 70, 80, 50, 35, 35, 35, 1, 0),
 (74, 'Machoke', 'Fighting', '', 80, 100, 70, 50, 60, 45, 1, 0),
 (75, 'Machamp', 'Fighting', '', 90, 130, 80, 65, 85, 55, 1, 0),
@@ -135,10 +128,9 @@ INSERT INTO `pokemon` (`Pokemon_lng_Codigo`, `Pokemon_vch_Name`, `Pokemon_vch_Ty
 (85, 'Rapidash', 'Fire', '', 65, 100, 70, 80, 80, 105, 1, 0),
 (86, 'Slowpoke', 'Water', 'Psychic', 90, 65, 65, 40, 40, 15, 1, 0),
 (87, 'Slowbro', 'Water', 'Psychic', 95, 75, 110, 100, 80, 30, 1, 0),
-(88, 'Mega Slowbro', 'Water', 'Psychic', 95, 75, 180, 130, 80, 30, 1, 0),
 (89, 'Magnemite', 'Electric', 'Steel', 25, 35, 70, 95, 55, 45, 1, 0),
 (90, 'Magneton', 'Electric', 'Steel', 50, 60, 95, 120, 70, 70, 1, 0),
-(91, 'Farfetch\'d', 'Normal', 'Flying', 52, 65, 55, 58, 62, 60, 1, 0),
+(91, "Farfetch\'d", 'Normal', 'Flying', 52, 65, 55, 58, 62, 60, 1, 0),
 (92, 'Doduo', 'Normal', 'Flying', 35, 85, 45, 35, 35, 75, 1, 0),
 (93, 'Dodrio', 'Normal', 'Flying', 60, 110, 70, 60, 60, 100, 1, 0),
 (94, 'Seel', 'Water', '', 65, 45, 55, 45, 70, 45, 1, 0),
@@ -150,7 +142,6 @@ INSERT INTO `pokemon` (`Pokemon_lng_Codigo`, `Pokemon_vch_Name`, `Pokemon_vch_Ty
 (100, 'Gastly', 'Ghost', 'Poison', 30, 35, 30, 100, 35, 80, 1, 0),
 (101, 'Haunter', 'Ghost', 'Poison', 45, 50, 45, 115, 55, 95, 1, 0),
 (102, 'Gengar', 'Ghost', 'Poison', 60, 65, 60, 130, 75, 110, 1, 0),
-(103, 'Mega Gengar', 'Ghost', 'Poison', 60, 65, 80, 170, 95, 130, 1, 0),
 (104, 'Onix', 'Rock', 'Ground', 35, 45, 160, 30, 45, 70, 1, 0),
 (105, 'Drowzee', 'Psychic', '', 60, 48, 45, 43, 90, 42, 1, 0),
 (106, 'Hypno', 'Psychic', '', 85, 73, 70, 73, 115, 67, 1, 0),
@@ -172,7 +163,6 @@ INSERT INTO `pokemon` (`Pokemon_lng_Codigo`, `Pokemon_vch_Name`, `Pokemon_vch_Ty
 (122, 'Chansey', 'Normal', '', 250, 5, 5, 35, 105, 50, 1, 0),
 (123, 'Tangela', 'Grass', '', 65, 55, 115, 100, 40, 60, 1, 0),
 (124, 'Kangaskhan', 'Normal', '', 105, 95, 80, 40, 80, 90, 1, 0),
-(125, 'Mega Kangaskhan', 'Normal', '', 105, 125, 100, 60, 100, 100, 1, 0),
 (126, 'Horsea', 'Water', '', 30, 40, 70, 70, 25, 60, 1, 0),
 (127, 'Seadra', 'Water', '', 55, 65, 95, 95, 45, 85, 1, 0),
 (128, 'Goldeen', 'Water', '', 45, 67, 60, 35, 50, 63, 1, 0),
@@ -185,11 +175,9 @@ INSERT INTO `pokemon` (`Pokemon_lng_Codigo`, `Pokemon_vch_Name`, `Pokemon_vch_Ty
 (135, 'Electabuzz', 'Electric', '', 65, 83, 57, 95, 85, 105, 1, 0),
 (136, 'Magmar', 'Fire', '', 65, 95, 57, 100, 85, 93, 1, 0),
 (137, 'Pinsir', 'Bug', '', 65, 125, 100, 55, 70, 85, 1, 0),
-(138, 'Mega Pinsir', 'Bug', 'Flying', 65, 155, 120, 65, 90, 105, 1, 0),
 (139, 'Tauros', 'Normal', '', 75, 100, 95, 40, 70, 110, 1, 0),
 (140, 'Magikarp', 'Water', '', 20, 10, 55, 15, 20, 80, 1, 0),
 (141, 'Gyarados', 'Water', 'Flying', 95, 125, 79, 60, 100, 81, 1, 0),
-(142, 'Mega Gyarados', 'Water', 'Dark', 95, 155, 109, 70, 130, 81, 1, 0),
 (143, 'Lapras', 'Water', 'Ice', 130, 85, 80, 85, 95, 60, 1, 0),
 (144, 'Ditto', 'Normal', '', 48, 48, 48, 48, 48, 48, 1, 0),
 (145, 'Eevee', 'Normal', '', 55, 55, 50, 45, 65, 55, 1, 0),
@@ -202,7 +190,6 @@ INSERT INTO `pokemon` (`Pokemon_lng_Codigo`, `Pokemon_vch_Name`, `Pokemon_vch_Ty
 (152, 'Kabuto', 'Rock', 'Water', 30, 80, 90, 55, 45, 55, 1, 0),
 (153, 'Kabutops', 'Rock', 'Water', 60, 115, 105, 65, 70, 80, 1, 0),
 (154, 'Aerodactyl', 'Rock', 'Flying', 80, 105, 65, 60, 75, 130, 1, 0),
-(155, 'Mega Aerodactyl', 'Rock', 'Flying', 80, 135, 85, 70, 95, 150, 1, 0),
 (156, 'Snorlax', 'Normal', '', 160, 110, 65, 65, 110, 30, 1, 0),
 (157, 'Articuno', 'Ice', 'Flying', 90, 85, 100, 95, 125, 85, 1, 1),
 (158, 'Zapdos', 'Electric', 'Flying', 90, 90, 85, 125, 90, 100, 1, 1),
@@ -211,11 +198,25 @@ INSERT INTO `pokemon` (`Pokemon_lng_Codigo`, `Pokemon_vch_Name`, `Pokemon_vch_Ty
 (161, 'Dragonair', 'Dragon', '', 61, 84, 65, 70, 70, 70, 1, 0),
 (162, 'Dragonite', 'Dragon', 'Flying', 91, 134, 95, 100, 100, 80, 1, 0),
 (163, 'Mewtwo', 'Psychic', '', 106, 110, 90, 154, 90, 130, 1, 1),
-(164, 'Mega Mewtwo X', 'Psychic', 'Fighting', 106, 190, 100, 154, 100, 130, 1, 1),
-(165, 'Mega Mewtwo Y', 'Psychic', '', 106, 150, 70, 194, 120, 140, 1, 1),
 (166, 'Mew', 'Psychic', '', 100, 100, 100, 100, 100, 100, 1, 0)
-COMMIT;
 
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+
+TIPO	NORMAL	FOGO	AGUA	ELÉTRICO	GRAMA	GELO	COMBATE	POÇÃO	CHÃO	VÔO	PSÍQUICO	ERRO	ROCHA	FANTASMA	DRAGÃO	SOMBRIO	AÇO	FADA
+normal	1	1	1	1	1	1	1	1	1	1	1	1	0,5	0	1	1	0,5	1
+fogo	1	0,5	0,5	1	2	2	1	1	1	1	1	2	0,5	1	0,5	1	2	1
+agua	1	2	0,5	1	0,5	1	1	1	2	1	1	1	2	1	0,5	1	1	1
+elétrico	1	1	2	0,5	0,5	1	1	1	0	2	1	1	1	1	0,5	1	1	1
+grama	1	0,5	2	1	0,5	1	1	0,5	2	0,5	1	0,5	2	1	0,5	1	0,5	1
+gelo	1	0,5	0,5	1	2	0,5	1	1	2	2	1	1	1	1	2	1	0,5	1
+combate	2	1	1	1	1	2	1	0,5	1	0,5	0,5	0,5	2	0	1	2	2	0,5
+Poção	1	1	1	1	2	1	1	0,5	0,5	1	1	1	0,5	0,5	1	1	0	2
+chão	1	2	1	2	0,5	1	1	2	1	0	1	0,5	2	1	1	1	2	1
+vôo	1	1	1	0,5	2	1	2	1	1	1	1	2	0,5	1	1	1	0,5	1
+psíquico	1	1	1	1	1	1	2	2	1	1	0,5	1	1	1	1	0	0,5	1
+erro	1	0,5	1	1	2	1	0,5	0,5	1	0,5	2	1	1	0,5	1	2	0,5	0,5
+Rocha	1	2	1	1	1	2	0,5	1	0,5	2	1	2	1	1	1	1	0,5	1
+fantasma	0	1	1	1	1	1	1	1	1	1	2	1	1	2	1	0,5	1	1
+Dragão	1	1	1	1	1	1	1	1	1	1	1	1	1	1	2	1	0,5	0
+Sombrio	1	1	1	1	1	1	0,5	1	1	1	2	1	1	2	1	0,5	1	0,5
+aço	1	0,5	0,5	0,5	1	2	1	1	1	1	1	1	2	1	1	1	0,5	2
+fada	1	0,5	1	1	1	1	2	0,5	1	1	1	1	1	1	2	2	0,5	1

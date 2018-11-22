@@ -12,7 +12,7 @@
 //	error_reporting(0);
 
 	ini_set('post_max_size', '640M');
-	ini_set('upload_max_filesize', '640M');
+    ini_set('upload_max_filesize', '640M');
 
     /* Codificao Padrao */
     ini_set('default_charset', 'UTF-8');

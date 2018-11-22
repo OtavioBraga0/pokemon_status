@@ -1,6 +1,6 @@
 function buscaPokemon(idPokemon, posicao){
     $.post(
-        "http://localhost/faculdade/pokemon_status/",
+        "http://localhost:8080/faculdade/pokemon_status/",
         {
             idPokemon: idPokemon
         }
@@ -112,15 +112,15 @@ $("#luta-pokemon").click(function(){
     let idPokemon1 = $(idPokemon[0]).val();
     let idPokemon2 = $(idPokemon[1]).val();
 
-    $.post(
-        "http://localhost/faculdade/pokemon_status/",
-        {
-            idPokemon1 = idPokemon1, 
-            idPokemon2 = idPokemon2 
-        }
-    ).done(function(arrObjCombats){
+    // $.post(
+    //     "http://localhost/faculdade/pokemon_status/",
+    //     {
+    //         idPokemon1 = idPokemon1, 
+    //         idPokemon2 = idPokemon2 
+    //     }
+    // ).done(function(arrObjCombats){
         
-    })
+    // })
 });
 
 $(document).ready(function(){

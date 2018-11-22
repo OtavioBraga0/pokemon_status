@@ -9,6 +9,16 @@ body{
     background-color: #6998df
 }
 
+.navbar .col-xs-3 .form-group{
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.navbar .col-xs-3 .form-group label{
+    width: 100%;
+}
+
 .pokemon-status{
     display: flex;
     align-items: center;
