@@ -10,12 +10,15 @@
       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
       <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
+      <!-- VIS -->
+      <link rel="stylesheet" href="{$WWW_CSS}vis.min.css">
+
       <!-- Style -->
         <link rel="stylesheet" href="{$WWW_CSS}style.css">
     </head>
 
     <body>
-        <div class="navbar">
+        {*<div class="navbar">
             <div class="col-xs-3">
                 <div class="form-group">
                     <label>Pokemon 1</label>
@@ -49,7 +52,16 @@
             <div class="col-xs-2">
                 <img id="luta-pokemon" src="https://png2.kisspng.com/20180729/ueg/kisspng-computer-icons-battle-clash-of-clans-shield-logo-5b5d3f09c880d6.1588008015328376418213.png" />
             </div>
-        </div>
-        <script src="{$WWW_JS}style.js"></script>
+        </div>*}
+      
+        <div id="mynetwork"></div>
+
+
+        <script>
+            var URL = "http://localhost/";
+        </script>
+        {*<script src="{$WWW_JS}style.js"></script>*}
+        <script src="{$WWW_JS}vis.js"></script>
+        <script src="{$WWW_JS}app.js"></script>
     </body>
 </html>
