@@ -7,16 +7,6 @@ Controller::loadClass('site/pokemon/pokemonDB');
 
 $oTemplate = Template::inicializaSmarty();
 
-
-if(isset($_POST['bGrafo'])){
-
-    $arrObjPokemonJSON = PokemonDB::pesquisaPokemonListaJson();
-    
-    echo $arrObjPokemonJSON;
-    return;
-
-} 
-
 if (isset($_POST['idPokemon'])){
 
     PokemonDB::setaFiltro(" AND Pokemon_lng_Codigo = ".$_POST['idPokemon']);
