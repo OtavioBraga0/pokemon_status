@@ -18,7 +18,7 @@
     </head>
 
     <body>
-        {*<div class="navbar">
+        <div class="navbar">
             <div class="col-xs-3">
                 <div class="form-group">
                     <label>Pokemon 1</label>
@@ -49,18 +49,35 @@
             <div id="pokemon2-status" class="col-xs-2 pokemon-status"></div>
         </div>
         <div class="row luta-menu">
-            <div class="col-xs-2">
-                <img id="luta-pokemon" src="https://png2.kisspng.com/20180729/ueg/kisspng-computer-icons-battle-clash-of-clans-shield-logo-5b5d3f09c880d6.1588008015328376418213.png" />
+            <div class="col-xs-3">
+                <img class="luta-pokemon1" src="https://png2.kisspng.com/20180729/ueg/kisspng-computer-icons-battle-clash-of-clans-shield-logo-5b5d3f09c880d6.1588008015328376418213.png" />
             </div>
-        </div>*}
-      
-        <div id="mynetwork"></div>
+            <div class="col-xs-6">
+                <!-- <img id="luta-pokemon" src="https://png2.kisspng.com/20180729/ueg/kisspng-computer-icons-battle-clash-of-clans-shield-logo-5b5d3f09c880d6.1588008015328376418213.png" /> -->
+            </div>
+            <div class="col-xs-3">
+                <img class="luta-pokemon2" src="https://png2.kisspng.com/20180729/ueg/kisspng-computer-icons-battle-clash-of-clans-shield-logo-5b5d3f09c880d6.1588008015328376418213.png" />
+            </div>
+        </div>
 
+        <div class="modal fade" id="modal-grafo" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                  <h4 class="modal-title">Vitórias</h4>
+                </div>
+                <div class="modal-body">
+                    <div id="mynetwork"></div>
+                </div>
+              </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
+          </div><!-- /.modal -->
 
         <script>
             var URL = "http://localhost/";
         </script>
-        {*<script src="{$WWW_JS}style.js"></script>*}
+        <script src="{$WWW_JS}style.js"></script>
         <script src="{$WWW_JS}vis.js"></script>
         <script src="{$WWW_JS}app.js"></script>
     </body>

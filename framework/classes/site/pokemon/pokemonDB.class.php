@@ -230,17 +230,97 @@ class PokemonDB
             self::$iLimite = 0;
         }
              
-        $mResultado = $oConexao->prepare("SELECT
-                           *
-                           FROM Pokemon
-                           INNER JOIN Combat AS c1 ON c1.Combat_lng_Pokemon1 = Pokemon_lng_Codigo
-                           INNER JOIN Combat AS c2 ON c2.Combat_lng_Pokemon2 = Pokemon_lng_Codigo
-                           WHERE 1 = 1 ".$sFiltros."                       
-                           ORDER BY ".self::$sOrdem."
-                           ".$sLimite."
+        $mResultado = $oConexao->prepare("SELECT DISTINCT
+                                    Combat_lng_Pokemon1,
+                                    p1.Pokemon_vch_Name as Pokemon1,
+                                    Combat_lng_Pokemon2,
+                                    p2.Pokemon_vch_Name as Pokemon2,
+                                    Combat_lng_Winner                    
+                                FROM Combat
+                                    INNER JOIN Pokemon AS p1 ON Combat_lng_Pokemon1 = p1.Pokemon_lng_Codigo
+                                    INNER JOIN Pokemon AS p2 ON Combat_lng_Pokemon2 = p2.Pokemon_lng_Codigo
+                                    INNER JOIN Pokemon AS p3 ON Combat_lng_Winner   = p3.Pokemon_lng_Codigo
+                                WHERE 1 = 1 ".$sFiltros."                     
+                                ORDER BY Combat_lng_Pokemon2
                          ");  
 
-       echo $mResultado->queryString;
+    //    echo $mResultado->queryString;
+        $mResultado->execute();
+
+        $mArrDados = $mResultado->fetchAll(PDO::FETCH_ASSOC);
+        
+        $arrObjPokemon = array();
+        
+        if (is_array($mArrDados))
+        {
+            
+            for ($a = 0, $iCount = count($mArrDados); $a < $iCount; ++$a)
+            {
+                
+                    $oPokemon = array(
+                        'id'       => $mArrDados[$a]['Combat_lng_Winner'] != $mArrDados[$a]['Combat_lng_Pokemon1'] ? $mArrDados[$a]['Combat_lng_Pokemon1'] : $mArrDados[$a]['Combat_lng_Pokemon2'],
+                        'label'    => $mArrDados[$a]['Combat_lng_Winner'] != $mArrDados[$a]['Combat_lng_Pokemon1'] ? $mArrDados[$a]['Pokemon1'] : $mArrDados[$a]['Pokemon2'],
+                    );
+                
+                $arrObjPokemon[] = $oPokemon;
+
+                if($iCount - 1  == $a){
+                    $oPokemon = array(
+                        'id'       => $mArrDados[$a]['Combat_lng_Winner'],
+                        'label'    => $mArrDados[$a]['Combat_lng_Winner'] == $mArrDados[$a]['Combat_lng_Pokemon1'] ? $mArrDados[$a]['Pokemon1'] : $mArrDados[$a]['Pokemon2'],
+                    );
+                    $arrObjPokemon[] = $oPokemon;
+                }
+            }
+        } 
+        return $arrObjPokemon;
+    }
+    
+    public static function pesquisaCombatGrafoJson( )
+    {
+        $oConexao = db::conectar();
+        
+        $sFiltros = '';
+        $sLimite  = '';
+        
+        // Define os Filtros
+        if (isset(self::$mArrCampos['CONDICAO']))
+        {
+            if ( self::$mArrCampos['CONDICAO'] <> '' )
+            {
+                for ($a = 0, $iCount = count(self::$mArrCampos['CONDICAO']); $a < $iCount; ++$a)
+                {
+                    $sFiltros .= (self::$mArrCampos['CONDICAO'][$a]);
+                }
+                //Limpa Filtros
+                self::$mArrCampos['CONDICAO'] = '';
+            }
+        }
+        
+        /* Define o Limite */
+        if (self::$iLimite > 0)
+        {
+            $sLimite = (' LIMIT '.self::$iInicio.",".self::$iLimite);
+
+            //Limpa Filtro
+            self::$iInicio = 0;
+            self::$iLimite = 0;
+        }
+             
+        $mResultado = $oConexao->prepare("SELECT DISTINCT
+                                    Combat_lng_Pokemon1,
+                                    p1.Pokemon_vch_Name,
+                                    Combat_lng_Pokemon2,
+                                    p2.Pokemon_vch_Name,
+                                    Combat_lng_Winner                       
+                                FROM Combat
+                                    INNER JOIN Pokemon AS p1 ON Combat_lng_Pokemon1 = p1.Pokemon_lng_Codigo
+                                    INNER JOIN Pokemon AS p2 ON Combat_lng_Pokemon2 = p2.Pokemon_lng_Codigo
+                                WHERE 1 = 1 ".$sFiltros."                     
+                                ORDER BY Combat_lng_Pokemon1
+                         ");  
+
+    //    echo $mResultado->queryString;
         $mResultado->execute();
 
         $mArrDados = $mResultado->fetchAll(PDO::FETCH_ASSOC);
@@ -253,19 +333,16 @@ class PokemonDB
             for ($a = 0, $iCount = count($mArrDados); $a < $iCount; ++$a)
             {
                 $oPokemon = array(
-                    'id'       => $mArrDados[$a]['Pokemon_lng_Codigo'],
-                    'label'         => $mArrDados[$a]['Pokemon_vch_Name'],
-                    'from'        => $mArrDados[$a]['Combat_lng_Winner'],
-                    'to'        => $mArrDados[$a]['c1.Combat_lng_Winner'] != $mArrDados[$a]['c1.Combat_lng_Pokemon1']? $mArrDados[$a]['c1.Combat_lng_Pokemon1'] : $mArrDados[$a]['c1.Combat_lng_Pokemon2']
+                    'from'       => $mArrDados[$a]['Combat_lng_Winner'],
+                    'to'         => $mArrDados[$a]['Combat_lng_Winner'] != $mArrDados[$a]['Combat_lng_Pokemon1'] ? $mArrDados[$a]['Combat_lng_Pokemon1'] : $mArrDados[$a]['Combat_lng_Pokemon2'],
                 );
                 
                
                 $arrObjPokemon[] = $oPokemon;
             }
         } 
-        return json_encode($arrObjPokemon);
+        return $arrObjPokemon;
     }
-    
 
     public static function pesquisaPokemon( $tipo = false )
     {

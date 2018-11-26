@@ -1,6 +1,6 @@
 function buscaPokemon(idPokemon, posicao){
     $.post(
-        "http://localhost:8080/faculdade/pokemon_status/",
+        URL + "faculdade/pokemon_status/",
         {
             idPokemon: idPokemon
         }
@@ -73,7 +73,7 @@ function comparaPokemon(){
     $(pokemon2).attr("class", "");
 
     for(let i = 0; i < 6; i++){
-        console.log($(pokemon1[i]).text() + " - " + $(pokemon2[i]).text());
+        // console.log($(pokemon1[i]).text() + " - " + $(pokemon2[i]).text());
         if(parseInt($(pokemon1[i]).text()) < parseInt($(pokemon2[i]).text())){
             $(pokemon1[i]).addClass("text-danger alert-danger");
             $(pokemon2[i]).addClass("text-success alert-success");
@@ -91,11 +91,60 @@ function validaPokemon(){
     let pokemon1 = $("#pokemon1-status label").text();
     let pokemon2 = $("#pokemon2-status label").text();
 
-    if((pokemon1 != "") && (pokemon2 != "")){
-        $("#luta-pokemon").show();
+    if(pokemon1 != ""){
+        $(".luta-pokemon1").show();
     } else {
-        $("#luta-pokemon").hide();
+        $(".luta-pokemon1").hide();        
+    } 
+    
+    if(pokemon2 != ""){
+        $(".luta-pokemon2").show();
+    } else {
+        $(".luta-pokemon2").hide();
     }
+}
+
+function montaGrafo(idPokemon){
+    var nodes;
+    var edges;
+    
+    $.post(
+        URL + 'faculdade/pokemon_status/montaGrafo',
+        {
+            idPokemon: idPokemon 
+        }
+    ).done(function(arrObjDados){
+        arrObjDados = JSON.parse(arrObjDados)
+        console.log(arrObjDados.nodes);
+        console.log(arrObjDados.edges);
+        
+        // create an array with nodes
+        nodes = new vis.DataSet(arrObjDados.nodes);
+        // create an array with edges
+        edges = new vis.DataSet(arrObjDados.edges);
+
+        // create a network
+        var container = document.querySelector("#mynetwork");
+        var data = {
+            nodes: nodes,
+            edges: edges
+        };
+        var options = { 
+            edges: {
+                arrows: {
+                    to:     {enabled: true, scaleFactor:1, type:'arrow'},
+                    middle: {enabled: false, scaleFactor:1, type:'arrow'},
+                    from:   {enabled: false, scaleFactor:1, type:'arrow'}
+                }
+            },
+            nodes: {
+                image: {selected: 'https://img.pokemondb.net/sprites/omega-ruby-alpha-sapphire/dex/normal/venosaur.png'}
+            }
+        };
+        var network = new vis.Network(container, data, options);
+    })
+
+    $("#modal-grafo").modal('show');
 }
 
 $("#pokemon1").change(function(){
@@ -106,28 +155,28 @@ $("#pokemon2").change(function(){
     buscaPokemon($(this).val(), 'right');
 })
 
-$("#luta-pokemon").click(function(){
+$(".luta-pokemon1").click(function(){
     let idPokemon = $(".idPokemon");
 
     let idPokemon1 = $(idPokemon[0]).val();
+
+    montaGrafo(idPokemon1);
+});
+
+$(".luta-pokemon2").click(function(){
+    let idPokemon = $(".idPokemon");
+
     let idPokemon2 = $(idPokemon[1]).val();
 
-    // $.post(
-    //     "http://localhost/faculdade/pokemon_status/",
-    //     {
-    //         idPokemon1 = idPokemon1, 
-    //         idPokemon2 = idPokemon2 
-    //     }
-    // ).done(function(arrObjCombats){
-        
-    // })
+    montaGrafo(idPokemon2);
 });
 
 $(document).ready(function(){
   $("#pokemon1").select2();  
   $("#pokemon2").select2();  
 
-  $("#luta-pokemon").hide();
+  $(".luta-pokemon1").hide();
+  $(".luta-pokemon2").hide();  
 
   data = [
     {
