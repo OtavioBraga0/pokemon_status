@@ -75,7 +75,7 @@
           </div><!-- /.modal -->
 
         <script>
-            var URL = "http://localhost/";
+            var URL = "http://localhost:8080/";
         </script>
         <script src="{$WWW_JS}style.js"></script>
         <script src="{$WWW_JS}vis.js"></script>

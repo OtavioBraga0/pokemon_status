@@ -115,11 +115,15 @@ function montaGrafo(idPokemon){
         }
     ).done(function(arrObjDados){
         arrObjDados = JSON.parse(arrObjDados)
-        console.log(arrObjDados.nodes);
-        console.log(arrObjDados.edges);
+        // console.log(arrObjDados.nodes);
+
+        var uniqueProducts = arrObjDados.nodes.filter( function( elem, i, array ) {
+            return array.indexOf( elem ) === i;
+        } );
+        console.log(uniqueProducts);
         
         // create an array with nodes
-        nodes = new vis.DataSet(arrObjDados.nodes);
+        nodes = new vis.DataSet(uniqueProducts);
         // create an array with edges
         edges = new vis.DataSet(arrObjDados.edges);
 
@@ -137,9 +141,6 @@ function montaGrafo(idPokemon){
                     from:   {enabled: false, scaleFactor:1, type:'arrow'}
                 }
             },
-            nodes: {
-                image: {selected: 'https://img.pokemondb.net/sprites/omega-ruby-alpha-sapphire/dex/normal/venosaur.png'}
-            }
         };
         var network = new vis.Network(container, data, options);
     })

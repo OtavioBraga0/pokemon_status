@@ -259,7 +259,9 @@ class PokemonDB
                 
                     $oPokemon = array(
                         'id'       => $mArrDados[$a]['Combat_lng_Winner'] != $mArrDados[$a]['Combat_lng_Pokemon1'] ? $mArrDados[$a]['Combat_lng_Pokemon1'] : $mArrDados[$a]['Combat_lng_Pokemon2'],
-                        'label'    => $mArrDados[$a]['Combat_lng_Winner'] != $mArrDados[$a]['Combat_lng_Pokemon1'] ? $mArrDados[$a]['Pokemon1'] : $mArrDados[$a]['Pokemon2'],
+                        'shape'    => 'image',
+                        'image'    => 'https://img.pokemondb.net/sprites/omega-ruby-alpha-sapphire/dex/normal/'.strtolower($mArrDados[$a]['Combat_lng_Winner'] != $mArrDados[$a]['Combat_lng_Pokemon1'] ? $mArrDados[$a]['Pokemon1'] : $mArrDados[$a]['Pokemon2']).'.png',
+                        // 'label'    => $mArrDados[$a]['Combat_lng_Winner'] != $mArrDados[$a]['Combat_lng_Pokemon1'] ? $mArrDados[$a]['Pokemon1'] : $mArrDados[$a]['Pokemon2'],
                     );
                 
                 $arrObjPokemon[] = $oPokemon;
@@ -267,7 +269,9 @@ class PokemonDB
                 if($iCount - 1  == $a){
                     $oPokemon = array(
                         'id'       => $mArrDados[$a]['Combat_lng_Winner'],
-                        'label'    => $mArrDados[$a]['Combat_lng_Winner'] == $mArrDados[$a]['Combat_lng_Pokemon1'] ? $mArrDados[$a]['Pokemon1'] : $mArrDados[$a]['Pokemon2'],
+                        'shape'    => 'image',
+                        'image'    => 'https://img.pokemondb.net/sprites/omega-ruby-alpha-sapphire/dex/normal/'.strtolower($mArrDados[$a]['Combat_lng_Winner'] == $mArrDados[$a]['Combat_lng_Pokemon1'] ? $mArrDados[$a]['Pokemon1'] : $mArrDados[$a]['Pokemon2']).'.png',
+                        // 'label'    => $mArrDados[$a]['Combat_lng_Winner'] == $mArrDados[$a]['Combat_lng_Pokemon1'] ? $mArrDados[$a]['Pokemon1'] : $mArrDados[$a]['Pokemon2'],
                     );
                     $arrObjPokemon[] = $oPokemon;
                 }
