@@ -28,7 +28,7 @@ function buscaPokemon(idPokemon, posicao){
                                     <label class='text-center'>${arrObjPokemon[0].sName}</label>
                                     <input type='hidden' class="idPokemon" value="${arrObjPokemon[0].iCodigo}" />
                                     <div class="col-xs-12">
-                                        <img class="img-responsive img-pokemon" src="https://img.pokemondb.net/artwork/${arrObjPokemon[0].sName.toLowerCase()}.jpg">
+                                        <img class="img-responsive img-pokemon" src="https://img.pokemondb.net/artwork/${arrObjPokemon[0].sImage}.jpg">
                                     </div>
                                     <div class="pokemon-type">
                                         ${arrObjPokemon[0].sType1 != "" ? '<img class="img-responsive img-atribute" src="https://veekun.com/dex/media/types/en/'+ arrObjPokemon[0].sType1.toLowerCase() +'.png"></img>':""}
@@ -115,17 +115,14 @@ function montaGrafo(idPokemon){
         }
     ).done(function(arrObjDados){
         arrObjDados = JSON.parse(arrObjDados)
-        // console.log(arrObjDados.nodes);
-
-        var uniqueProducts = arrObjDados.nodes.filter( function( elem, i, array ) {
-            return array.indexOf( elem ) === i;
-        } );
-        console.log(uniqueProducts);
         
+        nodes = eliminaRepeticao(ordenaJson(arrObjDados.nodes), 'id')
+        edges = eliminaRepeticao(arrObjDados.edges, 'to')        
+
         // create an array with nodes
-        nodes = new vis.DataSet(uniqueProducts);
+        nodes = new vis.DataSet(nodes);
         // create an array with edges
-        edges = new vis.DataSet(arrObjDados.edges);
+        edges = new vis.DataSet(edges);
 
         // create a network
         var container = document.querySelector("#mynetwork");
@@ -146,6 +143,28 @@ function montaGrafo(idPokemon){
     })
 
     $("#modal-grafo").modal('show');
+}
+
+
+function ordenaJson(lista) {
+    return lista.sort(function(a, b) {
+        return a.id - b.id;
+    });
+}
+
+function eliminaRepeticao(arr, prop) {
+    var novoArray = [];
+    var lookup  = {};
+
+    for (var i in arr) {
+        lookup[arr[i][prop]] = arr[i];
+    }
+
+    for (i in lookup) {
+        novoArray.push(lookup[i]);
+    }
+
+    return novoArray;
 }
 
 $("#pokemon1").change(function(){

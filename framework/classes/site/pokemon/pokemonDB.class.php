@@ -9,6 +9,33 @@ class PokemonDB
     private static $iLimite = 0;
     private static $iInicio = 0;
     
+    private static $Pokemon = array(
+        'kyurem',
+        'keldeo',
+        'meloetta',
+        'tornadus',
+        'deoxys',
+        'wormadam',
+        'shaymin',
+        'giratina',
+        'basculin',
+        'darmanitan',
+        'thundurus',
+        'landorus',
+        'aegislash',
+        'meowstic',
+        'pumpkaboo',
+        'gourgeist',
+        'zygarde',
+        'hoopa',
+    );
+
+    private static $Pokemon2 = array(
+        'rotom',
+        'kyogre',
+        'groudon'
+    );
+
     public static function setaFiltro($sArgCampo)
     {
         self::$mArrCampos['CONDICAO'][] = $sArgCampo;
@@ -30,6 +57,36 @@ class PokemonDB
         self::$iInicio = $iArgInicio;
     }
     
+    public static final function geraImagem($sImagem){
+        $sImagem = strtolower($sImagem);
+        $sImagem = str_replace(' ', '-', $sImagem);
+        $sImagem = str_replace('.', '', $sImagem);
+        $sImagem = str_replace("'", '', $sImagem);
+        
+        $sImagem = explode('-', $sImagem);
+
+        if($sImagem[0] == 'mega'){
+            if(isset($sImagem[2])){
+                $sImagem = $sImagem[1].'-'.$sImagem[0].'-'.$sImagem[2];
+            } else {
+                $sImagem = $sImagem[1].'-'.$sImagem[0];
+            }
+        } else if(in_array($sImagem[0], self::$Pokemon)){
+            $sImagem = $sImagem[0].'-'.$sImagem[1];
+            $sImagem = str_replace('half', '50', $sImagem);
+        } else if(isset($sImagem[1])){
+            if(in_array($sImagem[1], self::$Pokemon2)){
+                $sImagem = $sImagem[1].'-'.$sImagem[0];
+            } else {
+                $sImagem = $sImagem[0].'-'.$sImagem[1];
+            }
+        } else {
+            $sImagem = implode('-', $sImagem);
+        }
+
+        return $sImagem;
+    }
+
     public static function pesquisaPokemonLista( )
     {
         $oConexao = db::conectar();
@@ -177,6 +234,9 @@ class PokemonDB
             
             for ($a = 0, $iCount = count($mArrDados); $a < $iCount; ++$a)
             {
+
+                $sImagem = self::geraImagem($mArrDados[$a]['Pokemon_vch_Name']);
+
                 $oPokemon = array(
                     'iCodigo'       => $mArrDados[$a]['Pokemon_lng_Codigo'],
                     'sName'         => $mArrDados[$a]['Pokemon_vch_Name'],
@@ -189,7 +249,8 @@ class PokemonDB
                     'iSpDefense'    => $mArrDados[$a]['Pokemon_lng_SpDefense'],
                     'iSpeed'        => $mArrDados[$a]['Pokemon_lng_Speed'],
                     'iGeneration'   => $mArrDados[$a]['Pokemon_lng_Generation'],
-                    'bLegendary'    => $mArrDados[$a]['Pokemon_bln_Legendary']
+                    'bLegendary'    => $mArrDados[$a]['Pokemon_bln_Legendary'],
+                    'sImage'        => $sImagem
                 );
                 
                
@@ -257,20 +318,28 @@ class PokemonDB
             for ($a = 0, $iCount = count($mArrDados); $a < $iCount; ++$a)
             {
                 
-                    $oPokemon = array(
-                        'id'       => $mArrDados[$a]['Combat_lng_Winner'] != $mArrDados[$a]['Combat_lng_Pokemon1'] ? $mArrDados[$a]['Combat_lng_Pokemon1'] : $mArrDados[$a]['Combat_lng_Pokemon2'],
-                        'shape'    => 'image',
-                        'image'    => 'https://img.pokemondb.net/sprites/omega-ruby-alpha-sapphire/dex/normal/'.strtolower($mArrDados[$a]['Combat_lng_Winner'] != $mArrDados[$a]['Combat_lng_Pokemon1'] ? $mArrDados[$a]['Pokemon1'] : $mArrDados[$a]['Pokemon2']).'.png',
-                        // 'label'    => $mArrDados[$a]['Combat_lng_Winner'] != $mArrDados[$a]['Combat_lng_Pokemon1'] ? $mArrDados[$a]['Pokemon1'] : $mArrDados[$a]['Pokemon2'],
-                    );
+                $sImagem = $mArrDados[$a]['Combat_lng_Winner'] != $mArrDados[$a]['Combat_lng_Pokemon1'] ? $mArrDados[$a]['Pokemon1'] : $mArrDados[$a]['Pokemon2'];
+                
+                $sImagem = self::geraImagem($sImagem);
+
+                $oPokemon = array(
+                    'id'       => $mArrDados[$a]['Combat_lng_Winner'] != $mArrDados[$a]['Combat_lng_Pokemon1'] ? $mArrDados[$a]['Combat_lng_Pokemon1'] : $mArrDados[$a]['Combat_lng_Pokemon2'],
+                    'shape'    => 'image',
+                    'image'    => 'https://img.pokemondb.net/sprites/omega-ruby-alpha-sapphire/dex/normal/'.$sImagem.'.png',
+                    // 'label'    => $mArrDados[$a]['Combat_lng_Winner'] != $mArrDados[$a]['Combat_lng_Pokemon1'] ? $mArrDados[$a]['Pokemon1'] : $mArrDados[$a]['Pokemon2'],
+                );
                 
                 $arrObjPokemon[] = $oPokemon;
 
                 if($iCount - 1  == $a){
+                    $sImagem = $mArrDados[$a]['Combat_lng_Winner'] == $mArrDados[$a]['Combat_lng_Pokemon1'] ? $mArrDados[$a]['Pokemon1'] : $mArrDados[$a]['Pokemon2'];
+        
+                    $sImagem = self::geraImagem($sImagem);
+
                     $oPokemon = array(
                         'id'       => $mArrDados[$a]['Combat_lng_Winner'],
                         'shape'    => 'image',
-                        'image'    => 'https://img.pokemondb.net/sprites/omega-ruby-alpha-sapphire/dex/normal/'.strtolower($mArrDados[$a]['Combat_lng_Winner'] == $mArrDados[$a]['Combat_lng_Pokemon1'] ? $mArrDados[$a]['Pokemon1'] : $mArrDados[$a]['Pokemon2']).'.png',
+                        'image'    => 'https://img.pokemondb.net/sprites/omega-ruby-alpha-sapphire/dex/normal/'.$sImagem.'.png',
                         // 'label'    => $mArrDados[$a]['Combat_lng_Winner'] == $mArrDados[$a]['Combat_lng_Pokemon1'] ? $mArrDados[$a]['Pokemon1'] : $mArrDados[$a]['Pokemon2'],
                     );
                     $arrObjPokemon[] = $oPokemon;

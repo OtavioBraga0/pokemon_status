@@ -23,7 +23,12 @@
                 <div class="form-group">
                     <label>Pokemon 1</label>
                     <select id="pokemon1" name="pokemon1" class="form-control">
+                        {$i = 0}
                         {foreach $arrObjPokemon as $oPokemon}
+                            {if $i != $oPokemon->iGeneration}
+                                {$i = $oPokemon->iGeneration}
+                                <option disabled>Geração {$oPokemon->iGeneration}</option>
+                            {/if}
                             <option value="{$oPokemon->iCodigo}">{$oPokemon->sName}</option>
                         {/foreach}
                     </select>
@@ -75,7 +80,8 @@
           </div><!-- /.modal -->
 
         <script>
-            var URL = "http://localhost:8080/";
+            // var URL = "http://localhost:8080/";
+            var URL = "http://localhost/";
         </script>
         <script src="{$WWW_JS}style.js"></script>
         <script src="{$WWW_JS}vis.js"></script>
